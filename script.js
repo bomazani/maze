@@ -57,7 +57,6 @@ function createMaze() {
         cell.id = randomVar;
         row.appendChild(cell);
       }
-
     }
   }
 }
@@ -74,25 +73,29 @@ function moveCursor() {
   moveCursorTo.appendChild(newCursor);
 
   currentPos = newPosition;
+
+  return true;
 }
 
 function checkLeft() {
   currentCol = Number(currentPos.substring(2,4));
   columnToMoveTo = currentCol - 1
-  if (columnToMoveTo < 0) {
+   if (columnToMoveTo < 0) {
     alert('Illegal Move');
     return;
-  }
+   }
 
   columnToMoveTo > 9 ? "" + columnToMoveTo : columnToMoveTo="0" + columnToMoveTo;
   newPosition = currentPos.substring(0,2) + String(columnToMoveTo);
   // console.log("columnToMoveTo " + columnToMoveTo);
 
-  if(map[Number(currentPos.substring(0,2))][Number(columnToMoveTo)] === "W"){
+  let leftRightOptions = map[Number(currentPos.substring(0,2))][Number(columnToMoveTo)]
+
+   if(leftRightOptions === "W"){
     return;
-  }else{
+   } else{
     moveCursor();
-  }
+   }
 }
 
 function checkRight(){
@@ -102,17 +105,14 @@ function checkRight(){
   columnToMoveTo > 9 ? "" + columnToMoveTo : columnToMoveTo="0" + columnToMoveTo;
   newPosition = currentPos.substring(0,2) + String(columnToMoveTo);
 
-  if(map[Number(currentPos.substring(0,2))][Number(columnToMoveTo)] === "F") {
+  let leftRightOptions = map[Number(currentPos.substring(0,2))][Number(columnToMoveTo)]
+
+  if (leftRightOptions === "F") {
     moveCursor();
     alert('You Win!!');
-
   }
 
-  if(map[Number(currentPos.substring(0,2))][Number(columnToMoveTo)] === "W"){
-    return;
-  }else{
-    moveCursor();
-  }
+  return leftRightOptions === 'W' ? false : moveCursor();
 }
 
 function checkUp(){
@@ -153,9 +153,9 @@ function checkDown(){
 
 document.addEventListener('keydown', (event) => {
   const keyName = event.key;
-  if (keyName === 'ArrowLeft') {
+   if (keyName === 'ArrowLeft') {
     checkLeft();
-  };
+   };
   if (keyName === 'ArrowRight') {
     checkRight();
   };
