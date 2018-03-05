@@ -91,11 +91,8 @@ function checkLeft() {
 
   let leftRightOptions = map[Number(currentPos.substring(0,2))][Number(columnToMoveTo)]
 
-   if(leftRightOptions === "W"){
-    return;
-   } else{
-    moveCursor();
-   }
+  return leftRightOptions === 'W' ? false : moveCursor();
+
 }
 
 function checkRight(){
@@ -117,39 +114,27 @@ function checkRight(){
 
 function checkUp(){
   currentRow = Number(currentPos.substring(0,2));
-  // console.log("current Row " + currentRow);
   rowToMoveTo = currentRow - 1;
 
   rowToMoveTo > 9 ? "" + rowToMoveTo : rowToMoveTo="0" + rowToMoveTo;
   newPosition = String(rowToMoveTo) + currentPos.substring(2,4);
-  // console.log("rowToMoveTo " + rowToMoveTo);
 
-  if (map[Number(rowToMoveTo)][Number(currentPos.substring(2,4))] === "W"){
-    return;
-  }else{
-    moveCursor();
-  }
+  upDownOptions = map[Number(rowToMoveTo)][Number(currentPos.substring(2,4))];
 
+  return upDownOptions === 'W' ? false : moveCursor();
 }
 
 function checkDown(){
   currentRow = Number(currentPos.substring(0,2));
-  console.log("current Row " + currentRow);
   rowToMoveTo = currentRow + 1;
 
   rowToMoveTo > 9 ? "" + rowToMoveTo : rowToMoveTo="0" + rowToMoveTo;
   newPosition = String(rowToMoveTo) + currentPos.substring(2,4);
-  console.log("rowToMoveTo " + rowToMoveTo);
 
+  upDownOptions = map[Number(rowToMoveTo)][Number(currentPos.substring(2,4))];
 
-  if (map[Number(rowToMoveTo)][Number(currentPos.substring(2,4))] === "W"){
-    return;
-  }else{
-    moveCursor();
-  }
-
+  return upDownOptions === 'W' ? false : moveCursor();
 }
-
 
 document.addEventListener('keydown', (event) => {
   const keyName = event.key;
