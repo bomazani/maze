@@ -5,17 +5,31 @@
 }
 .wall {background-color: blue;}
 .mazeBlock {
-  width: 20px;
+  width: 25px;
   height: 25px;
 }
 .open {
   /* border: 1px solid black; */
 }
-.start {background-color: green;}
-.finish {background-color: red;}
+
 .cursor {
   width: 14px;
   height: 19px;
   border-radius: 50%;
   background-color: black;
+}
+
+.storageLocation {
+  background-color: burlywood;
+  border-radius: 50%
+}
+
+.crate {
+  background-color: rgb(216, 21, 21);
+  z-index: 1;
+}
+
+.filledLocation {
+  background-color: rgb(119, 41, 41);
+  z-index: 3; 
 }

@@ -3,18 +3,16 @@ let newPosition;
 const mazeContainer = document.getElementById('container');
 
 const map = [
-   "WWWWWWWW",
-   "W   W   ",
-   "W W W WW",
-   "W W W   ",
-   "W WWWWWW",
-   "W       ",
-   "W WWW WW",
-   "W W   W ",
-   "W WWWWW ",
-   "W WWWWW ",
-   "WWWWWWWW"
-];
+    "  WWWWW ",
+    "WWW   W ",
+    "WOSB  W ",
+    "WWW BOW ",
+    "WOWWB W ",
+    "W W O WW",
+    "WB XBBOW",
+    "W   O  W",
+    "WWWWWWWW"
+  ];
 
 
 function createMaze() {
@@ -31,15 +29,21 @@ function createMaze() {
             cell.className = 'wall mazeBlock';
             cell.id = randomVar;
             row.appendChild(cell);
-         } else if (map[i][j] === ' ') {
+         } else if (map[i][j] === 'X') {
             let cell = document.createElement("div");
-            cell.className = 'open mazeBlock';
+            cell.className = 'filledLocation mazeBlock';
             cell.id = randomVar;
             row.appendChild(cell);
 
-         } else if (map[i][j] === 'S') {
+         } else if (map[i][j] === 'B') {
             let cell = document.createElement("div");
-            cell.className = 'start mazeBlock';
+            cell.className = 'crate mazeBlock';
+            cell.id = randomVar;
+            row.appendChild(cell);
+
+        } else if (map[i][j] === 'S') {
+            let cell = document.createElement("div");
+            cell.className = 'cursor';
             cell.id = randomVar;
             row.appendChild(cell);
 
@@ -47,9 +51,15 @@ function createMaze() {
             let cursor = document.createElement('div');
             cursor.className = 'cursor';
             cell.appendChild(cursor);
-         } else {
+        } else if (map[i][j] === 'O') {
             let cell = document.createElement("div");
-            cell.className = 'finish mazeBlock';
+            cell.className = 'storageLocation mazeBlock';
+            cell.id = randomVar;
+            row.appendChild(cell);
+         
+        } else {
+            let cell = document.createElement("div");
+            cell.className = 'open mazeBlock';
             cell.id = randomVar;
             row.appendChild(cell);
          }
