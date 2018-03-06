@@ -1,5 +1,5 @@
 let currentPos = '0202';
-let newPosition= [9,9];
+let newPosition;
 const mazeContainer = document.getElementById('container');
 
 const map = [
@@ -109,17 +109,36 @@ function checkLeft() {
 
 function checkRight() {
    currentCol = Number(currentPos.substring(2, 4));
-   columnToMoveTo = currentCol + 1
+   columnToMoveTo = currentCol + 1;
+   columnIn3rdPosition = currentCol + 2;
 
+   // pads 0 to single digits //
    columnToMoveTo > 9 ? "" + columnToMoveTo : columnToMoveTo = "0" + columnToMoveTo;
+   // identifies the intended new position //
    newPosition = currentPos.substring(0, 2) + String(columnToMoveTo);
 
-   let leftRightOptions = map[Number(currentPos.substring(0, 2))][Number(columnToMoveTo)]
+    // assigns variable to the position on either left or right of cursor (depending on arrow selected) //
+   let leftRightOptions = map[Number(currentPos.substring(0, 2))][Number(columnToMoveTo)];
+   //assigns variable to the second position to the left or right (depending on arrow selected) //
+   let leftRight3rdPosition = map[Number(currentPos.substring(0, 2))][Number(columnIn3rdPosition)];
 
-   if (leftRightOptions === "F") {
-      moveCursor();
-      alert('You Win!!');
-   }
+   if (leftRightOptions === "B") {
+        if (leftRight3rdPosition === "W"){
+            alert("Wall preventing move");
+            return;
+        }else if(leftRight3rdPosition === "B"){
+            alert("2nd crate preventing move");
+            return;
+        }else{ 
+            moveCursor();
+        }
+    }
+
+
+//    if (leftRightOptions === "F") {
+//       moveCursor();
+//       alert('You Win!!');
+//    }
 
    return leftRightOptions === 'W' ? false : moveCursor();
 }
