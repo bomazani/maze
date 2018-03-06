@@ -3,21 +3,17 @@ let newPosition;
 const mazeContainer = document.getElementById('container');
 
 const map = [
-   "WWWWWWWWWWWWWWWWWWWWW",
-   "W   W     W     W W W",
-   "W W W WWW WWWWW W W W",
-   "W W W   W     W W   W",
-   "W WWWWWWW W WWW W W W",
-   "W         W     W W W",
-   "W WWW WWWWW WWWWW W W",
-   "W W   W   W W     W W",
-   "W WWWWW W W W WWW W F",
-   "S     W W W W W W WWW",
-   "WWWWW W W W W W W W W",
-   "W     W W W   W W W W",
-   "W WWWWWWW WWWWW W W W",
-   "W       W       W   W",
-   "WWWWWWWWWWWWWWWWWWWWW"
+   "WWWWWWWW",
+   "W   W   ",
+   "W W W WW",
+   "W W W   ",
+   "W WWWWWW",
+   "W       ",
+   "W WWW WW",
+   "W W   W ",
+   "W WWWWW ",
+   "W WWWWW ",
+   "WWWWWWWW"
 ];
 
 
