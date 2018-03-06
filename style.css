@@ -12,9 +12,9 @@
   /* border: 1px solid black; */
 }
 
-.cursor {
-  width: 14px;
-  height: 19px;
+.player {
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   background-color: black;
 }

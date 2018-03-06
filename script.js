@@ -49,7 +49,7 @@ function createMaze() {
 
             // Appending the starting cursor to the starting div
             let cursor = document.createElement('div');
-            cursor.className = 'cursor';
+            cursor.className = 'player';
             cell.appendChild(cursor);
         } else if (map[i][j] === 'O') {
             let cell = document.createElement("div");
