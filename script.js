@@ -1,16 +1,16 @@
-let currentPos = '0900';
-let newPosition;
+let currentPos = '0202';
+let newPosition= [9,9];
 const mazeContainer = document.getElementById('container');
 
 const map = [
     "  WWWWW ",
     "WWW   W ",
-    "WOSB  W ",
-    "WWW BOW ",
-    "WOWWB W ",
-    "W W O WW",
-    "WB XBBOW",
-    "W   O  W",
+    "W S   W ",
+    "WWW   W ",
+    "W WW  W ",
+    "W W   WW",
+    "W      W",
+    "W      W",
     "WWWWWWWW"
   ];
 
@@ -43,14 +43,15 @@ function createMaze() {
 
         } else if (map[i][j] === 'S') {
             let cell = document.createElement("div");
-            cell.className = 'cursor';
+            cell.className = 'open mazeBlock';
             cell.id = randomVar;
             row.appendChild(cell);
 
             // Appending the starting cursor to the starting div
             let cursor = document.createElement('div');
-            cursor.className = 'player';
+            cursor.className = 'cursor';
             cell.appendChild(cursor);
+
         } else if (map[i][j] === 'O') {
             let cell = document.createElement("div");
             cell.className = 'storageLocation mazeBlock';
@@ -62,14 +63,18 @@ function createMaze() {
             cell.className = 'open mazeBlock';
             cell.id = randomVar;
             row.appendChild(cell);
-         }
+        }
+
       }
    }
 }
 
+
+
 function moveCursor() {
    // take class cursor away from current div
    var toCancelClass = document.getElementById(currentPos);
+   console.log(toCancelClass);
    toCancelClass.removeChild(toCancelClass.childNodes[0]);
 
    // move class cursor to new div
@@ -81,6 +86,7 @@ function moveCursor() {
    currentPos = newPosition;
 
    return true;
+   console.log(map);
 }
 
 function checkLeft() {
